@@ -5,7 +5,7 @@ import 'package:i11_solution_012/02_distributed/distributed_homepage.dart';
 import 'package:i11_solution_012/03_distributed_with_passive_widgets/distributed_passive_homepage.dart';
 import 'package:i11_solution_012/04_global/global_homepage.dart';
 
-const config = Config.distributed;
+const config = Config.local;
 
 void main() {
   runApp(const MyApp());

@@ -84,7 +84,7 @@ class DistributedHomepageState extends State<DistributedHomepage> {
           Expanded(
             child: Row(
               children: [
-                for (var i = 2; i < 4; i++)
+                for (var i = 0; i < 2; i++)
                   Expanded(
                     child: DistributedQuadrant(
                       number: i,
