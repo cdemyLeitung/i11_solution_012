@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:i11_solution_012/02_distributed/distributed_homepage_title.dart';
 import 'package:i11_solution_012/02_distributed/distributed_quadrant.dart';
 
 class DistributedHomepage extends StatefulWidget {
@@ -31,67 +32,23 @@ class DistributedHomepageState extends State<DistributedHomepage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.indigo,
-        title: Row(
-          children: [
-            Container(
-              color: Colors.blue,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(5, 2, 5, 5),
-                child: Text(
-                  '${counters.fold(0, (before, current) => before + current)}',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                child: Text(
-                  'Titel',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-            ),
-            Container(
-              color: Colors.blue,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(5, 2, 5, 5),
-                child: Text(
-                  '${counters.fold(0, (before, current) => before + current)}',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-            ),
-          ],
-        ),
+        title: DistributedHomepageTitle(counters: counters),
       ),
       body: Column(
         children: <Widget>[
           Expanded(
             child: Row(
               children: [
-                for (var i = 0; i < 2; i++)
-                  Expanded(
-                    child: DistributedQuadrant(
-                      number: i,
-                      onClick: _changeValue,
-                      getValue: _getValue,
-                    ),
-                  ),
+                Expanded(child: _quadrant(0)),
+                Expanded(child: _quadrant(1)),
               ],
             ),
           ),
           Expanded(
             child: Row(
               children: [
-                for (var i = 0; i < 2; i++)
-                  Expanded(
-                    child: DistributedQuadrant(
-                      number: i,
-                      onClick: _changeValue,
-                      getValue: _getValue,
-                    ),
-                  ),
+                Expanded(child: _quadrant(2)),
+                Expanded(child: _quadrant(3)),
               ],
             ),
           ),
@@ -99,4 +56,10 @@ class DistributedHomepageState extends State<DistributedHomepage> {
       ),
     );
   }
+
+  Widget _quadrant(int number) => DistributedQuadrant(
+    number: number,
+    onClick: _changeValue,
+    getValue: _getValue,
+  );
 }
